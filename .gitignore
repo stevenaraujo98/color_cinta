@@ -1,6 +1,5 @@
 /img/*
 !/img/img1.jpg
-!/img/img2.jpg
 
 /result/*
 !/result/hsv_img1_02-04-2021-13-26-41_1.jpg
