@@ -1,1 +1,6 @@
 /img/*
+!/img/img1.jpg
+!/img/img2.jpg
+
+/result/*
+!/result/img1.jpg
