@@ -3,12 +3,14 @@ import tkinter as tk
 import PIL.Image, PIL.ImageTk
 import glob
 import time
+from os import remove
 
 class Aplicacion:
     def __init__(self, dir_image):
         self.click = 0, 0
         self.click_number = 0
         self.list_rois = []
+        self.list_rois_ref = []
         self.name_image = dir_image.split('\\')[2].split('.')
 
         self.window=tk.Tk()
@@ -24,9 +26,21 @@ class Aplicacion:
 
         #bindear
         self.canvas1.bind('<Double-Button-1>', self.enter)
+        self.canvas1.bind_all('<BackSpace>', self.delete_last_roi)
+        self.canvas1.bind_all('<Escape>', self.delete_rois)
         self.window.bind('<Return>', self.close)
 
         self.window.mainloop()
+
+    def delete_rois(self, event):
+        for i in self.list_rois_ref:
+            self.canvas1.delete(i)
+        self.list_rois_ref = []
+        self.list_rois = []
+
+    def delete_last_roi(self, event):
+        self.canvas1.delete(self.list_rois_ref.pop())
+        self.list_rois.pop()
 
     def enter(self, event):
         x_tmp = event.x
@@ -36,7 +50,7 @@ class Aplicacion:
             self.click = x_tmp, y_tmp
         elif(self.click_number == 1):
             x1, y1 = self.click
-            self.canvas1.create_rectangle(x1, y1, x_tmp, y_tmp, fill="#18c194",width=1, stipple="gray50")
+            self.list_rois_ref.append(self.canvas1.create_rectangle(x1, y1, x_tmp, y_tmp, fill="#18c194",width=1, stipple="gray50"))
             self.list_rois.append((x1, y1, x_tmp, y_tmp))
             self.click = 0, 0
             print(self.list_rois)
@@ -60,10 +74,13 @@ class Aplicacion:
                 fic.write(str(j[0]) + ',' + str(j[1]) + ',' + str(j[2]) + '\n')
             fic.close()
 
-            cv2.imwrite('./result/hsv_' + new_name + '.' + self.name_image[1], frameHSV)
-            cv2.imwrite('./result/rgb_' + new_name  + '.' + self.name_image[1], new_img)
+            # cv2.imwrite('./result/hsv_' + new_name + '.' + self.name_image[1], frameHSV)
+            # cv2.imwrite('./result/rgb_' + new_name  + '.' + self.name_image[1], new_img)
             contador+=1
+        
+        remove('./img/' + self.name_image[0] + '.' + self.name_image[1])
         self.list_rois = []
+        self.list_rois_ref = []
         self.window.destroy()
        
 raiz = '.\\img\\*'

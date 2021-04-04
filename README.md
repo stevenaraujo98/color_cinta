@@ -3,8 +3,9 @@ Para procesado de imagen seleccionando rois dentro de la imagen.
 Al presionar "Enter" se guardan las imagenes RGB, HSV y un txt con el HSV de los rois ya elegidos.
 
 #### Necesario:
-- En la carpeta **"img"** se situan las imagenes a procesar
+- En la carpeta **"img"** se situan las imagenes a procesar y una ves ya procesadas son eliminadas
 - En la carpeta **"result"** se crearan las respuesta de las imagenes con nombre  
+- Se puede usar la carpeta **"originals"** la cual se encuentra ignorada por git para almacenar las imagenes originales y no perderlas  
 
 ```
 "NOMBREIMAGENORIGEN_dia-mes-año-hora-minutos-segundos_NUMEROITERACION"  
