@@ -16,3 +16,8 @@ Al presionar "Enter" se guardan las imagenes RGB, HSV y un txt con el HSV de los
 - hsv_img1_02-04-2021-13-26-41_1.jpg
 - rgb_img1_02-04-2021-13-26-41_1.jpg
 - img1_02-04-2021-13-26-41_1.txt
+
+
+## Grafico
+Lee todas las carpetas de colores en **"results"**, que dentro tienen los archivos con los HSV.
+Guarda el resultado de los datos usados para el grafico de frecuencia en la carpeta **"result"**.

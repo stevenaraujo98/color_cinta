@@ -1,7 +1,10 @@
 /img/*
 !/img/img1.jpg
 
+/results/*
 /result/*
+!/result/red.png
+!/result/red.txt
 !/result/hsv_img1_02-04-2021-13-26-41_1.jpg
 !/result/rgb_img1_02-04-2021-13-26-41_1.jpg
 !/result/img1_02-04-2021-13-26-41_1.txt
@@ -10,3 +13,5 @@
 !/result/img1_02-04-2021-13-26-41_0.txt
 
 /originals/*
+/cintas/*
+/.vscode/*

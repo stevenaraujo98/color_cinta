@@ -11,7 +11,8 @@ class Aplicacion:
         self.click_number = 0
         self.list_rois = []
         self.list_rois_ref = []
-        self.name_image = dir_image.split('\\')[2].split('.')
+        temp = dir_image.split('\\')[2].split('.')
+        self.name_image = [temp[0]+'.'+temp[1], temp[2]]
 
         self.window=tk.Tk()
         self.window.title("Ventana")
@@ -86,5 +87,10 @@ class Aplicacion:
 raiz = '.\\img\\*'
 rutas = glob.glob(raiz, recursive=False)
 
+saltos = 0
 for i in rutas:
-    aplicacion1=Aplicacion(i)
+    # if saltos == 0:
+        aplicacion1=Aplicacion(i)
+    # elif saltos == 1: #saltando 1
+    #     saltos = -1
+    # saltos += 1
